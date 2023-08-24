@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS `Entrance_Exam`;
-CREATE DATABASE `Entrance_Exam`;
+DROP DATABASE IF EXISTS `Testing_System`;
+CREATE DATABASE `Testing_System`;
 
-USE `Entrance_Exam`;
+USE `Testing_System`;
 
 DROP TABLE IF EXISTS `Department`;
 CREATE TABLE `Department` (
@@ -60,8 +60,8 @@ CREATE TABLE `Type_Question` (
     PRIMARY KEY (Type_ID)
 );
 
-DROP TABLE IF EXISTS `CategoryQuestion`;
-CREATE TABLE `CategoryQuestion` (
+DROP TABLE IF EXISTS `Category_Question`;
+CREATE TABLE `Category_Question` (
     Category_ID INT UNSIGNED AUTO_INCREMENT,
     Category_Name VARCHAR(255),
     PRIMARY KEY (Category_ID)
@@ -77,7 +77,7 @@ CREATE TABLE `Question` (
     Create_Date DATE NOT NULL,
     PRIMARY KEY (Question_ID),
     FOREIGN KEY (Category_ID)
-        REFERENCES `CategoryQuestion` (Category_ID),
+        REFERENCES `Category_Question` (Category_ID),
     FOREIGN KEY (Type_ID)
         REFERENCES `Type_Question` (Type_ID)
 );
@@ -104,7 +104,7 @@ CREATE TABLE `Exam` (
     Create_Date DATE NOT NULL,
     PRIMARY KEY (Exam_ID),
     FOREIGN KEY (Category_ID)
-        REFERENCES `CategoryQuestion` (Category_ID)
+        REFERENCES `Category_Question` (Category_ID)
 );
 
 DROP TABLE IF EXISTS `Exam_Question`;
